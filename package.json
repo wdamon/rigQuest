@@ -1,0 +1,26 @@
+{
+  "name": "rigquest",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.15.4",
+    "passport": "^0.4.0",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.3",
+    "react-dom": "^15.6.1",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.13",
+    "sequelize": "^4.9.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
