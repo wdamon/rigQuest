@@ -6,6 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const config = require('./serverConfig.js');
 const db = require('./db/db.js');
+const Carriers = require('./db/models/carriers.js');
 
 // passport.use(new LocalStrategy(
 //   function(username, password, done) {
@@ -49,14 +50,14 @@ app.post('/login', function(req,res) {
 });
 
 app.get('/test', function(req, res) {
-  db.Carriers.findOne({where: {userName: "The Rick Sanchez"}}).then(users=> {
+  Carriers.findOne({where: {userName: "The Rick Sanchez"}}).then(users=> {
     res.send(users);
   })
 })
 
 db.sync().then(function() {
   app.listen(config.port, function () {
-  console.log(`Example app listening on port ${config.port}!`);
+  console.log(`Server listening on port ${config.port}!`);
 })
 });
 
