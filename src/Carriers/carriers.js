@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Row, Col, Button, PageHeader} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-const Carriers = React.createClass({
-  getInitialState() {
-    return {
-      signup: false,
-    }
-  }, 
+class Carriers extends Component {
+  constructor(props) {
+    super(props);
+    this.state={signup:false}
+    this.signup = this.signup.bind(this);
+  }
 
   signup() {
     this.setState({signup: !this.state.signup })
-  },
+  }
 
   render() {
     return(
@@ -48,7 +48,7 @@ const Carriers = React.createClass({
       </div>
     )
   }
-})
+}
 
 
 

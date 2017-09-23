@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Button, FormGroup, ControlLabel, FormControl, Form} from 'react-bootstrap';
 
- 
-const SignUpForm = React.createClass({
-  getInitialState() {
-    return {
+ class SignUpForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state= {
       userName: '',
       password: '',
       fName: '',
@@ -14,40 +14,49 @@ const SignUpForm = React.createClass({
       org: '',
       truckType: '',
     }
-  }, 
+    this.handleUserNameChange = this.handleUserNameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleFNameChange = this.handleFNameChange.bind(this);
+    this.handleLNameChange = this.handleLNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePhoneChange = this.handlePhoneChange.bind(this);
+    this.handleOrgChange = this.handleOrgChange.bind(this);
+    this.handleTruckTypeChange = this.handleTruckTypeChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleUserNameChange(e) {
     this.setState({userName: e.target.value });
-  },
+  }
 
   handlePasswordChange(e) {
     this.setState({password: e.target.value });
-  },
+  }
 
   handleFNameChange(e) {
     this.setState({fName: e.target.value });
-  },
+  }
 
   handleLNameChange(e) {
     this.setState({lName: e.target.value });
-  },
+  }
 
   handleEmailChange(e) {
     this.setState({email: e.target.value });
-  },
+  }
   handlePhoneChange(e) {
     this.setState({phone: e.target.value });
-  },
+  }
   handleOrgChange(e) {
     this.setState({Org: e.target.value });
-  },
+  }
   handleTruckTypeChange(e) {
     this.setState({truckType: e.target.value });
-  },
+  }
 
   handleSubmit(e) {
 
-  },
+  }
    
   render() {
     return (
@@ -129,6 +138,6 @@ const SignUpForm = React.createClass({
     </div>
     )
   }
-})
+}
 
 export default SignUpForm

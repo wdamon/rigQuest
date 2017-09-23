@@ -22,7 +22,7 @@ class App extends Component {
             </PageHeader>
 
             <Row className="show-grid">
-              <Route exact path="/home" component ={Home}/>
+              <Route path="/home" component ={Home}/>
               <Route path="/carriers" component ={Carriers}/>
               <Route path="/shippers" component ={Shippers}/>
             </Row>
