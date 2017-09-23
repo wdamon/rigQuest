@@ -7,7 +7,7 @@ import {
 import logo from './assets/logo.png';
 import Nav from './nav.js';
 import Home from  './home.js';
-import Carriers from './carriers.js';
+import Carriers from './Carriers/carriers.js';
 import Shippers from './shippers.js';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
             </PageHeader>
 
             <Row className="show-grid">
-              <Route exact path="/" component ={Home}/>
+              <Route exact path="/home" component ={Home}/>
               <Route path="/carriers" component ={Carriers}/>
               <Route path="/shippers" component ={Shippers}/>
             </Row>

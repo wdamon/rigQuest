@@ -7,29 +7,37 @@ import {LinkContainer} from 'react-router-bootstrap';
 
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+     this.state = {selected:1};
+     this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(selectedKey) {
+      this.setState({selected:selectedKey});
+      console.log(this.state.selected);
+    }
 
   render() {
-    function handleSelect(selectedKey) {
-      alert('selected ' + selectedKey);
-    }
+    
     return (
       <Col sm={3} md={2}>
-        <Nav bsStyle="pills" stacked activeKey={1}>
-          <NavItem eventKey={1}> 
-            <LinkContainer to="/">
-              <Button>Home</Button>
-            </LinkContainer>
-          </NavItem>
-          <NavItem eventKey={2}>
-            <LinkContainer to="/carriers">
-              <Button>Carrier </Button>
-            </LinkContainer>
-          </NavItem>
+        <Nav bsStyle="pills" stacked activeKey={this.state.selected} onSelect={this.handleSelect}>
+          <LinkContainer to="/home">
+            <NavItem eventKey={1}> 
+              Home
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/carriers">  
+            <NavItem eventKey={2}>
+              Carrier
+            </NavItem>
+         </LinkContainer>
+         <LinkContainer to="/shippers">
           <NavItem eventKey={3}> 
-            <LinkContainer to="/shippers">
-              <Button>Shippers</Button>
-            </LinkContainer>
+            Shippers
           </NavItem>
+        </LinkContainer>  
         </Nav>
       </Col>
     )  
