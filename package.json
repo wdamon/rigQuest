@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "array-sort": "^0.1.4",
+    "grommet": "^1.7.0",
     "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
