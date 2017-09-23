@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 import config from '../config.js';
+import 'whatwg-fetch';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -37,16 +38,12 @@ class LoginForm extends Component {
   }
 
   handleSubmit(e) {
-    const body = JSON.stringify(this.state);
-    console.log(body)
     fetch(`${config.url}/login`, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        Accept: 'application/json',
-        'content-type': 'application/json',
-      },
-      body:body,
+      method: 'post',
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      })
     })
     .then(response => response.json())
     .then((responseData) => {
@@ -91,7 +88,7 @@ class LoginForm extends Component {
           <FormControl.Feedback />
         </FormGroup>
         <Row>
-          <Button type="submit" onClick={this.handleSubmit}>
+          <Button onClick={this.handleSubmit}>
             Submit
           </Button>
         </Row>  
