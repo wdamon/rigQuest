@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const session = require("express-session");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
-const config = require('./config.js');
-const db = require('./db/index.js');
+const config = require('./serverConfig.js');
+const db = require('./db/db.js');
 
 // passport.use(new LocalStrategy(
 //   function(username, password, done) {
@@ -54,7 +54,7 @@ app.get('/test', function(req, res) {
   })
 })
 
-db.sequelize.sync().then(function() {
+db.sync().then(function() {
   app.listen(config.port, function () {
   console.log(`Example app listening on port ${config.port}!`);
 })

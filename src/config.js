@@ -1,5 +1,5 @@
 module.exports = {
- port : 3000,
+ port : 8080,
  //url: 'http://localhost:3000',
  url:'https://rigquest.herokuapp.com/',
  googleMapsDirectionsApiKey: 'AIzaSyCEG3pcPrO_weZ4pXNzCuZqtoOIscLm1gM',
