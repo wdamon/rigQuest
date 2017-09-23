@@ -1,0 +1,9 @@
+/**
+ *  the border was taken from grommets css
+ *  TODO: start using css variables for grommet standards
+ *  */
+.header {
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}

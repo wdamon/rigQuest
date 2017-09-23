@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col, PageHeader, Image, Button} from 'react-bootstrap';
-import {
-  Route,
-  Link
-} from 'react-router-dom'
-import logo from './assets/logo.png';
-import Nav from './nav.js';
-import Home from  './home.js';
-import Carriers from './Carriers/carriers.js';
-import Shippers from './shippers.js';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Box, Split } from 'grommet';
+import Sidebar from 'components/Sidebar';
+import LoadBoard from 'components/LoadBoard';
+import LoginView from 'components/LoginView';
+import SignupView from 'components/SignUpView';
+import CarrierView from 'components/CarrierView';
+import ShipperView from 'components/ShipperView';
+import ProfileView from 'components/ProfileView';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Nav />
-          <Col sm={9} md={10}>
-            <PageHeader>
-              <Image src={logo} responsive alt="logo" />
-            </PageHeader>
-
-            <Row className="show-grid">
-              <Route path="/home" component ={Home}/>
-              <Route path="/carriers" component ={Carriers}/>
-              <Route path="/shippers" component ={Shippers}/>
-            </Row>
-
-          </Col>
-        </Row>
-      </Grid>    
+      <Router>
+        <div id="App">
+          <Split flex="right">
+            <Sidebar fixed />
+            <Box full id="main">
+              <Route path="/login" component={LoginView} />
+              <Route path="/signup" component={SignupView} />
+              <Route path="/loadboard" component={LoadBoard} />
+              <Route path="/carriers" component={CarrierView} />
+              <Route path="/shippers" component={ShipperView} />
+              <Route path="/profile" component={ProfileView} />
+            </Box>
+          </Split>
+        </div>
+      </Router>
     );
   }
 }
-
-
 
 export default App;

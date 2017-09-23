@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "shipper": "shipper_1",
+    "home": "Denver, CO"
+  },
+  {
+    "id": 1,
+    "shipper": "shipper_2",
+    "home": "Oakland, CA"
+  },
+  {
+    "id": 2,
+    "shipper": "shipper_3",
+    "home": "Phoenix, AZ"
+  },
+  {
+    "id": 3,
+    "shipper": "shipper_4",
+    "home": "Portland, OR"
+  }
+]

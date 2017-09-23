@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "carrier": "carrier_1",
+    "home": "Denver, CO",
+    "location": "Denver, CO"
+  },
+  {
+    "id": 1,
+    "carrier": "carrier_2",
+    "home": "Oakland, CA",
+    "location": "Austin, TX"
+  },
+  {
+    "id": 2,
+    "carrier": "carrier_3",
+    "home": "Phoenix, AZ",
+    "location": "Buffalo, NY"
+  },
+  {
+    "id": 3,
+    "carrier": "carrier_4",
+    "home": "Portland, OR",
+    "location": "Eureka, CA"
+  }
+]
