@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve('public'),
     filename: 'app.bundle.js',
   },
+  resolve: {
+    modules: ['src', 'node_modules'],
+  },
   module: {
     loaders: [
       {
@@ -13,7 +16,8 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'env'],
+          presets: ['react'],
+          plugins: ["transform-class-properties"],
         }
       },
         {
