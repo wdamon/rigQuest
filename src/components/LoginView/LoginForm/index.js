@@ -4,9 +4,47 @@ import { Box, Button, Label, Form, FormField, TextInput, Title } from 'grommet';
 import 'App.css';
 
 export default class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+      email: '',
+      password: '',
+    }
+    this.emailInput = this.emailInput.bind(this);
+    this.passwordInput = this.passwordInput.bind(this);
+    this.onLogin = this.onLogin.bind(this);
+  }
+
+  emailInput = (ev) => {
+    this.setState({email: ev.target.value})
+  }
+
+  passwordInput = (ev) => {
+    this.setState({password: ev.target.value})
+  }
+
   onLogin = (event) => {
-    this.setState({ form: event });
-    console.log(event);
+    const body = JSON.stringify(this.state);
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body,
+    })
+   .then((resp) => {
+      console.log('pre-json', resp);
+      return resp.json();
+    })
+    .then((resp) => {
+      if (!resp.success) {
+        console.log(message);
+        this.setState({ message: resp.message });
+      } else {
+        console.log('pos', resp);
+      }
+    });
   }
 
   onSignUp = (event) => {
@@ -19,8 +57,8 @@ export default class LoginForm extends Component {
       <Box align="center" justify="center" pad={ { between: 'small'} }>
         <Title>Login</Title>
         <Form>
-          <FormField label='email'>
-            <TextInput />
+          <FormField label='email' >
+            <TextInput onDOMChange={this.emailInput} />
           </FormField>
           <FormField label='password'>
             <TextInput />
