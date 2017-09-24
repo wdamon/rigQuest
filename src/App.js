@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Box, Split } from 'grommet';
-import Sidebar from 'components/Sidebar';
-import LoadBoard from 'components/LoadBoard';
-import LoginView from 'components/LoginView';
-import SignupView from 'components/SignUpView';
-import CarrierView from 'components/CarrierView';
-import ShipperView from 'components/ShipperView';
-import ProfileView from 'components/ProfileView';
+import Sidebar from './components/Sidebar';
+import LoadBoard from './components/LoadBoard';
+import LoginView from './components/LoginView';
+import SignupView from './components/SignUpView';
+import CarrierView from './components/CarrierView';
+import ShipperView from './components/ShipperView';
+import ProfileView from './components/ProfileView';
 import './App.css';
 
 class App extends Component {
