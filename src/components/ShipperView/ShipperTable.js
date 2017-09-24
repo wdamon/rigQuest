@@ -3,7 +3,6 @@ import arraySort from 'array-sort';
 import { Table, TableHeader } from 'grommet';
 import data from 'data/shippers.json';
 import ShipperItem from './ShipperItem';
-import ShipperSearch from './ShipperSearch';
 import './ShipperTable.css';
 
 // TODO: get this from the data

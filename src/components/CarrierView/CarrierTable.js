@@ -3,7 +3,6 @@ import arraySort from 'array-sort';
 import { Table, TableHeader } from 'grommet';
 import data from 'data/carriers.json';
 import CarrierItem from './CarrierItem';
-import CarrierSearch from './CarrierSearch';
 import './CarrierTable.css';
 
 // TODO: get this from the data
