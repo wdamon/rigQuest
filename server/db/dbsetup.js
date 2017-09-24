@@ -1,4 +1,6 @@
 const Carriers = require('./models/carriers.js');
+const Sessions = require('./models/sessions.js');
+const db = require('./db');
 
 Carriers.sync({force: true}).then(() => {
   return Carriers.create({
@@ -15,3 +17,6 @@ Carriers.sync({force: true}).then(() => {
     status: "On Route",
   })
 })
+
+
+db.sync()

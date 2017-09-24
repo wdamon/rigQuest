@@ -1,0 +1,15 @@
+trucker and shipper (specify if shipper or carrier)
+
+wallet ID
+
+createLoad(posting a load)
+
+POST PUT and GET for all loads
+
+Get USER ()
+
+Signup for load
+
+serving up contracts
+
+Load: starting point, ending point, specifications for the trucktype, cost, shipper involved, trucker involved, time and date, 
