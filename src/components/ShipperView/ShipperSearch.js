@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from 'data/shippers.json';
 import { Form, SearchInput } from 'grommet';
 import './ShipperSearch.css';
 
