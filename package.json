@@ -34,7 +34,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
-    "start": "webpack && node index.js",
+    "start": "webpack && nodemon index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
