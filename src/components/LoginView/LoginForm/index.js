@@ -25,13 +25,18 @@ export default class LoginForm extends Component {
   }
 
   onLogin = (event) => {
-    const body = JSON.stringify(this.state);
+    const body = {
+        email: this.state.email,
+        password: this.state.password,
+      };
+    console.log(body);
     fetch('/login', {
+      credentials: 'same-origin',
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
       },
-      body,
+      body: JSON.stringify(body),
     })
    .then((resp) => {
       console.log('pre-json', resp);
@@ -61,7 +66,7 @@ export default class LoginForm extends Component {
             <TextInput onDOMChange={this.emailInput} />
           </FormField>
           <FormField label='password'>
-            <TextInput />
+            <TextInput onDOMChange={this.passwordInput} />
           </FormField>
         </Form>
         <Button className="btn-med" primary onClick={this.onLogin}
