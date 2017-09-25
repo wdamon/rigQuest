@@ -20,12 +20,12 @@ exports.checkSession = (req, res, next) => {
   if (req.sessionID) {
     Session.findOne({
       where: { sid: req.sessionID },
-      include: [{ model: User, as: 'User' }],
+      include: [{ model: Carrier,}],
     })
       .then((sessionSave) => {
         if (sessionSave) {
-          if (sessionSave.userId) {
-            return res.send({ success: true, message: 'authentication succeeded', profile: sessionSave.User });
+          if (sessionSave.carrierId) {
+            return res.send({ success: true, message: 'authentication succeeded', profile: sessionSave.Carrier });
           }
           return res.send({ success: false, message: 'session exists but userId is not assigned', profile: null });
         }

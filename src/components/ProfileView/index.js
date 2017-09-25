@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Box } from 'grommet';
 
-export default function ProfileView(props) {
-  return (
-    <div>
-      <h1>PROFILE VIEW</h1>
-    </div>
-  );
+export default class ProfileView extends Component {
+  render() {
+    return (
+      <Box full align="center" justify="center">
+       <h1> {`Welcome ${this.props.profile.firstName}!`}</h1>
+      </Box>
+    );
+  };
 }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Box, Button, Label, Form, FormField, TextInput, Title } from 'grommet';
+import { Redirect } from 'react-router-dom';
+
+import Auth from '../../../helpers.js';
 
 import 'App.css';
 
@@ -10,6 +13,7 @@ export default class LoginForm extends Component {
       message: '',
       email: '',
       password: '',
+      redirectToReferrer:false,
     }
     this.emailInput = this.emailInput.bind(this);
     this.passwordInput = this.passwordInput.bind(this);
@@ -29,7 +33,7 @@ export default class LoginForm extends Component {
         email: this.state.email,
         password: this.state.password,
       };
-    console.log(body);
+
     fetch('/login', {
       credentials: 'same-origin',
       method: 'POST',
@@ -39,15 +43,17 @@ export default class LoginForm extends Component {
       body: JSON.stringify(body),
     })
    .then((resp) => {
-      console.log('pre-json', resp);
       return resp.json();
     })
     .then((resp) => {
       if (!resp.success) {
-        console.log(message);
+        console.log(message); //i'm not serving a message, yet
         this.setState({ message: resp.message });
       } else {
         console.log('pos', resp);
+        Auth.isAuthenticated = true;
+        this.props.updateUser(resp.profile);
+        this.setState({redirectToReferrer:true});
       }
     });
   }
@@ -58,9 +64,18 @@ export default class LoginForm extends Component {
   }
 
   render() {
+    const { from } = this.props.history.location.state || { from: { pathname: '/profile' } }
+
+     if (this.state.redirectToReferrer) {
+      return (
+        <Redirect to={from}/>
+      )
+    }
+    
     return (
       <Box align="center" justify="center" pad={ { between: 'small'} }>
-        <Title>Login</Title>
+        <Title>Please Login</Title>
+        <h2>{this.state.message}</h2>
         <Form>
           <FormField label='email' >
             <TextInput onDOMChange={this.emailInput} />

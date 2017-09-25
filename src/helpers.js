@@ -1,0 +1,3 @@
+exports.Auth = {
+  isAuthenticated: false,
+};

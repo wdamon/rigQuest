@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 const bcrypt = require('bcrypt-nodejs');
+const Session = require ('./sessions.js');
 
 const carrier = db.define('carrier', {
   image: {
@@ -53,6 +54,11 @@ carrier.generateHash = password => bcrypt.hashSync(
 carrier.validPassword = password => bcrypt.compareSync(
   password,
   this.password);
+
+Session.belongsTo(carrier);
+
+
+
 
 
 module.exports = carrier;

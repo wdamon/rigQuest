@@ -17,7 +17,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['react'],
-          plugins: ["transform-class-properties"],
+          plugins: ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread"],
         }
       },
         {

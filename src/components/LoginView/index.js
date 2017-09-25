@@ -17,7 +17,7 @@ export default class LoginView extends Component {
   render() {
     return (
       <Box full align="center" justify="center">
-        <LoginForm />
+        <LoginForm updateUser={this.props.updateUser} history={this.props.history} />
       </Box>
     );
   };
