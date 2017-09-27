@@ -18,8 +18,12 @@ export default class LoginForm extends Component {
     this.emailInput = this.emailInput.bind(this);
     this.passwordInput = this.passwordInput.bind(this);
     this.onLogin = this.onLogin.bind(this);
+    this.goToSignUp = this.goToSignUp.bind(this);
   }
 
+  goToSignUp = () => {
+    this.props.history.push('/signup');
+  }
   emailInput = (ev) => {
     this.setState({email: ev.target.value})
   }
@@ -86,7 +90,7 @@ export default class LoginForm extends Component {
         </Form>
         <Button className="btn-med" primary onClick={this.onLogin}
           label={<Label>Log In</Label>} />
-        <Button className="btn-med" secondary path="/signup">
+        <Button className="btn-med" secondary onClick={this.goToSignUp}>
           <Label>Sign Up</Label>
         </Button>
       </Box>

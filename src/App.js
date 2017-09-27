@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
 
-    const RenderLogin = (props) => {
+    const RenderLogin = (props, history) => {
       return (
         <LoginView 
           updateUser={this.updateUser}
