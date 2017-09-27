@@ -44,6 +44,7 @@ exports.handleLogin = (req, res, next) => {
     }
     // Generate a JSON response reflecting authentication status
     if (!user) {
+      console.log("user is " + user + " and it's not there");
       return res.status(400).send({ success: false, message: 'authentication failed' });
     }
     return req.login(user, (loginErr) => {
@@ -78,6 +79,8 @@ exports.handleSignupCarrier = (req, res, next) => {
     });
   })(req, res, next);
 };
+
+
 exports.handleLogout = (req, res) => {
   Session.destroy({ where: { sid: req.sessionID } });
   res.redirect('/');
@@ -91,11 +94,9 @@ exports.checkAuth = (req, res, next) => {
 };
 exports.updateCarrier = (req, res) => {
   Carrier.update({
-    image: req.body.image,
-    firstName: req.body.fName,
-    lastName: req.body.lName,
-    fullName: `${req.body.firstName} ${req.body.lastName}`,
     email: req.body.email,
+    username: req.body.username,
+    fullname: req.body.fullname,
     phone: req.body.phone,
     organization: req.body.org,
     truckType: req.body.truckType

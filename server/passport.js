@@ -22,24 +22,24 @@ module.exports = (passport) => {
 
   // SIGNUP logic
   passport.use('local-signup-Carrier', new LocalStrategy({
-    usernameField: 'userName',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true,
   },
-  (req, userName, password, done) => {
+  (req, email, password, done) => {
     process.nextTick(() => {
-      Carrier.findOne({ where: { userName: userName } })
+      Carrier.findOne({ where: { email: email } })
         .then((user) => {
           if (user) {
             return done(null, false, { message: 'User exsits' });
           }
           Carrier.create({
             image: req.body.image,
-            userName: userName,
-            firstName: req.body.fName,
-            lastName: req.body.lName,
+            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             fullName: `${req.body.firstName} ${req.body.lastName}`,
-            email: req.body.email,
+            email: email,
             password: Carrier.generateHash(password),
             phone: req.body.phone,
             organization: req.body.org,
@@ -62,14 +62,14 @@ module.exports = (passport) => {
     passReqToCallback: true,
   },
   (req, email, password, done) => {
-    Carrier.findOne({ where: { userName:email } })
+    Carrier.findOne({ where: { email:email } })
       .then((user) => {
         if (!user) {
           return done(null, false);
         }
-        // if (!bcrypt.compareSync(password, user.password)) {
-        //   return done(null, false);
-        // }
+        if (!bcrypt.compareSync(password, user.password)) {
+          return done(null, false);
+        }
         return done(null, user);
       })
       .catch(err => done(err, false));
