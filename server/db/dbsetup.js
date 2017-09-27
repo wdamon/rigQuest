@@ -1,6 +1,9 @@
 const Carriers = require('./models/carriers.js');
 const Sessions = require('./models/sessions.js');
+const Contracts = require('./models/contracts.js');
+const Shippers = require('./models/shippers.js')
 const db = require('./db');
+
 
 // Carriers.sync({force: true}).then(() => {
 //   return Carriers.create({
@@ -18,4 +21,5 @@ const db = require('./db');
 //   })
 // })
 
+Shippers.sync({force: true});
 // db.sync()

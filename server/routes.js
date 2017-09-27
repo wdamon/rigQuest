@@ -15,6 +15,9 @@ module.exports = (app) => {
   app.get('/logout', controller.handleLogout);
   app.post('/login', controller.handleLogin);
   app.post('/signupCarrier', controller.handleSignupCarrier);
+  app.post('/signupShipper', controller.handleSignupShipper);
+  app.post('/addContract', controller.addContract);
+  app.get('/getContracts', controller.getContracts);
   app.get('/checkSession', controller.checkSession, (req, res) => {
     res.status(200).json({
       status: 'Login successful!',

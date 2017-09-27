@@ -2,7 +2,8 @@
 const passport = require('passport');
 const request = require('request');
 const Session = require('./db/models/sessions.js');
-const Carrier = require('./db/models/carriers.js')
+const Carrier = require('./db/models/carriers.js');
+const Contract = require('./db/models/contracts.js');
 
 const sid = process.env.sid;
 
@@ -80,6 +81,30 @@ exports.handleSignupCarrier = (req, res, next) => {
   })(req, res, next);
 };
 
+exports.handleSignupShipper = (req, res, next) => {
+  passport.authenticate('local-signup-Shipper', (err, user) => {
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (!user) {
+      return res.send({ success: false, message: 'authentication failed' });
+    }
+    return req.login(user, (loginErr) => {
+      if (loginErr) {
+        return next(loginErr);
+      }
+      req.session.userId = user.id;
+      return res.send({
+        success: true,
+        message: 'authentication succeeded',
+        profile: user
+      });
+    });
+  })(req, res, next);
+};
+
+
 
 exports.handleLogout = (req, res) => {
   Session.destroy({ where: { sid: req.sessionID } });
@@ -115,3 +140,26 @@ exports.getProfileCarrier = (req, res) => {
       return 'getProfile promise resolved';
     });
 };
+
+exports.addContract = (req, res) => {
+  Contract.create({
+    sAddress: req.body.sAddress,
+    sCity: req.body.sCity,
+    sState: req.body.sState,
+    sPostal: req.body.sPostal,
+    eAddress: req.body.eAddress,
+    eCity: req.body.eCity,
+    eState: req.body.eState,
+    ePostal: req.body.ePostal,
+    amount: req.body.amount,
+    shipper_id: req.body.shipper_id,
+  })
+  .then(() => res.status(200).send())
+  .catch((err) => {
+    res.status(500).send('error adding new item')
+  });
+}
+
+exports.getContracts = (req, res) => {
+  Contract.findAll({}).then((contracts) => res.status(200).send(contracts))
+}
