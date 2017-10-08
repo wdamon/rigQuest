@@ -4,6 +4,8 @@ const request = require('request');
 const Session = require('./db/models/sessions.js');
 const Carrier = require('./db/models/carriers.js');
 const Contract = require('./db/models/contracts.js');
+const {promisify} = require('util');
+
 
 const sid = process.env.sid;
 
@@ -163,3 +165,13 @@ exports.addContract = (req, res) => {
 exports.getContracts = (req, res) => {
   Contract.findAll({}).then((contracts) => res.status(200).send(contracts))
 }
+
+exports.assignContract = (req, res) => {
+  let {userId, contractId} = request.body;
+
+  Contract.update({
+    carrier_id: userId,
+  }, {where : {id: contractId} })
+  .then((User) => res.sstatus(200).send())
+};
+
